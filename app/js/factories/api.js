@@ -49,13 +49,53 @@ angular.module('DataServices', [])
             };
             $http({
                 method: 'JSONP',
-
+                url: url,
+                params: request,
+                cache: true
             })
 
+            .success(function (data, status, headers, config) {
+                defer.resolve(data);
+            })
+
+            .error(function (data, status, headers, config) {
+                console.log(status + " error attempting to access geonames.org");
+                defer.rejects();
+            });
+
+            return defer.promise;
+
+        },
+
+        getCapitals: function (countryCode) {
+            var defer = $q.defer();
+            var url = urlBase + "searchJSON";
+            var request = {
+                callback: 'JSON_CALLBACK',
+                q: "capital",
+                formatted: true,
+                country: countryCode,
+                maxRows: 1,
+                username: username
+            };
+
+            $http({
+                method: 'JSONP',
+                url: url,
+                params: request,
+                cache: true
+            })
+
+            .success(function (data, status, headers, config) {
+                defer.resolve(data.geonames[0]);
+            })
+
+            .error(function (data, status, headers, config) {
+                console.log(status + " error attempting to access geonames.org.");
+                defer.reject();
+            });
+
+            return defer.promise;
         }
-
-    })
-}
-}
-
-}])
+    };
+}]);
