@@ -2,7 +2,7 @@ angular.module('ccApp')
 
 .controller('mainController', ['$scope', 'countryData', function ($scope, countryData) {}])
 
-.controller('countriesController', ['$scope', '$location', '$filter', 'countryData', '$q', function ($scope, $location $filter, countryData, $q) {
+.controller('countriesController', ['$scope', '$location', '$filter', 'countryData', '$q', function ($scope, $location, $filter, countryData, $q) {
     'use strict';
 
     var toString = Object.prototype.toString;

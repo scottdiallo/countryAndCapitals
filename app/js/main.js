@@ -14,7 +14,7 @@ angular.module('ccApp', ['DataServices', 'Data', 'ngRoute', 'ngAnimate'])
                 templateUrl: './partials/details.html',
                 controller: 'detailsController'
             })
-            .otherwise: ({
+            .otherwise({
                 redirectTo: '/home'
             });
         }]);
