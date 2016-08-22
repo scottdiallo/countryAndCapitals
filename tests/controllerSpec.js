@@ -14,7 +14,8 @@ describe('countriesController', function () {
         });
     }));
 
-    it('initial predicate value should equal country name'function () {
+    it('initial predicate value should equal country name', function () {
         expect($scope.predicate).toEqual("countryName");
     });
+
 });
